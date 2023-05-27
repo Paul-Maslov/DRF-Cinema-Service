@@ -26,13 +26,9 @@
 
 ``
 POSTGRES_HOST="elephant server"
-
 POSTGRES_NAME="elephant db name"
-
 POSTGRES_USER="elephant user"
-
 POSTGRES_PASSWORD="elephant password"
-
 ``
 
 into file in the main root
