@@ -1,5 +1,6 @@
 # Dockerizing DRF Cinema-Service
-
+#### API service for cinema management writing on DRF
+     
 - Read the guideline before start
 
 # Features:
