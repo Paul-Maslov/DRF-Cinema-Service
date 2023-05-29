@@ -96,16 +96,14 @@ class MovieViewSet(
         return queryset.distinct()
 
     def get_serializer_class(self):
+
         if self.action == "list":
             return MovieListSerializer
-
-        if self.action == "retrieve":
+        elif self.action == "retrieve":
             return MovieDetailSerializer
 
-        if self.action == "upload_image":
-            return MovieImageSerializer
-
-        return MovieSerializer
+        else:
+            return super().get_serializer_class()
 
     @action(
         methods=["POST"],
@@ -116,13 +114,12 @@ class MovieViewSet(
     def upload_image(self, request, pk=None):
         """Endpoint for uploading image to specific movie"""
         movie = self.get_object()
-        serializer = self.get_serializer(movie, data=request.data)
+        serializer = MovieImageSerializer(movie, data=request.data)
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     @extend_schema(
         parameters=[
