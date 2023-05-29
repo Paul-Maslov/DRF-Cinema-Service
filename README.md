@@ -85,7 +85,9 @@ POSTGRES_HOST=<your db host name>
 POSTGRES_NAME=<your db name>
 POSTGRES_USER=<your db username>
 POSTGRES_PASSWORD=<your db password>
+DJANGO_SECRET_KEY=secret_key_of_your_project
 ```
+-Sample of environment variables you can take from ``.env.sample``
 
 #### Step 3
 
